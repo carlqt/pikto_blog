@@ -1,16 +1,33 @@
 %p#notice= notice
+
+%h1
+  %strong= @blog.title
+
+%hr
+
 %p
-  %strong Title:
-  = @blog.title
-%p
-  %strong Content:
   = @blog.content
+
+%hr
+
 %p
-  %strong Status:
-  = @blog.status
+  %strong Comments:
+
+= form_for @comment, url: blog_comments_path(blog_id: params[:id]) do |f|
+  = f.text_area :message
+  %br
+  = f.submit "Post Comment"
+
+%br
 %p
-  %strong User:
-  = @blog.user
+  %strong All Comments:
+
+- @all_comments.each do |comment|
+  .panel.panel-default
+    .panel-body
+      = comment.message
+
+
 = link_to 'Edit', edit_blog_path(@blog)
 |
 = link_to 'Back', blogs_path

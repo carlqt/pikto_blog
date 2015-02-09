@@ -19,6 +19,8 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @comment = @blog.comments.new
+    @all_comments = Comment.all
     unless current_user.is_owner?( @blog )
       respond_to do |format|
         format.html { redirect_to '/', notice: 'You are not allowed to view this blog!' }
@@ -126,11 +128,11 @@ class BlogsController < ApplicationController
       end
     end
   end
-  
+
   def search
     @blogs = Blog.where(search_params)
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
@@ -141,7 +143,7 @@ class BlogsController < ApplicationController
     def blog_params
       params.require(:blog).permit(:title, :content, :status, :users_id)
     end
-  
+
   def search_params
       params.require(:blog).permit(:title, :status)
     end
