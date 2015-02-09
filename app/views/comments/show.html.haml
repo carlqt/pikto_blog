@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Message:
+  = @comment.message
+%p
+  %strong Status:
+  = @comment.status
+%p
+  %strong Blog:
+  = @comment.blog
+= link_to 'Edit', edit_comment_path(@comment)
+|
+= link_to 'Back', comments_path
