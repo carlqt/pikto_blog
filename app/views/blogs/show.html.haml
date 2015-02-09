@@ -14,7 +14,7 @@
   %strong Comments:
 
 = form_for @comment, url: blog_comments_path(@blog) do |f|
-  = f.text_area :message
+  = f.text_area :message, required: true
   %br
   = f.submit "Post Comment"
 

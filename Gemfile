@@ -49,6 +49,6 @@ group :test, :development do
   gem 'better_errors'
   gem 'pry-rails'
   gem 'binding_of_caller'
-  gem 'rspec'
+  gem 'rspec-rails'
   gem 'haml-rails'
 end
