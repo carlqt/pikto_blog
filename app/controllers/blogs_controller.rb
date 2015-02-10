@@ -20,7 +20,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @comment = @blog.comments.new
-    @all_comments = Comment.all
+    @all_comments = Comment.blog_comments @blog.id
     unless current_user.is_owner?( @blog )
       respond_to do |format|
         format.html { redirect_to '/', notice: 'You are not allowed to view this blog!' }

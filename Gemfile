@@ -47,6 +47,7 @@ gem 'ancestry'
 
 group :test, :development do
   gem 'better_errors'
+  gem 'pry'
   gem 'pry-rails'
   gem 'binding_of_caller'
   gem 'rspec-rails'

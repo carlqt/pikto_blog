@@ -215,6 +215,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   paperclip
+  pry
   pry-rails
   rails (= 4.1.0)
   rspec-rails

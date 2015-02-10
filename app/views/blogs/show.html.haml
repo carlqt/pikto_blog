@@ -22,11 +22,12 @@
 %p
   %strong All Comments:
 
-- @all_comments.each do |comment|
-  .panel.panel-default
-    .panel-heading
-      %strong= comment.user_email
-    .panel-body= comment.message
+- unless @all_comments.empty?
+  - @all_comments.each do |comment|
+    .panel.panel-default
+      .panel-heading
+        %strong= comment.user_email
+      .panel-body= comment.message
 
 
 = link_to 'Edit', edit_blog_path(@blog)

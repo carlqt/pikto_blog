@@ -11,6 +11,9 @@ class Comment < ActiveRecord::Base
 
   delegate :email, to: :user, prefix: true
 
+  # Scope
+  scope :blog_comments, ->(id) { where.not(blog_id: nil).where(blog_id: id)}
+
   private
   def set_status
     self.status = 'pending'
