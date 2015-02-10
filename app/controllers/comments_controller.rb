@@ -30,9 +30,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
-        @blog = Blog.find params[:blog_id]
-        @all_comments = Comment.all
-        format.html { render template: 'blogs/show' }
+        format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

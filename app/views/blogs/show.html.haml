@@ -13,9 +13,8 @@
 %p
   %strong Comments:
 
-= form_for @comment, url: blog_comments_path(@blog) do |f|
+= form_for @comment, url: add_comment_blog_path(@blog) do |f|
   = f.text_area :message, required: true
-  = f.hidden_field :blog_id, value: @blog.id
   %br
   = f.submit "Post Comment"
 

@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   before_create :set_status
 
   # Validations
-  validates :message, :blog, presence: true
+  validates :message, :blog, :user, presence: true
 
   delegate :email, to: :user, prefix: true
 

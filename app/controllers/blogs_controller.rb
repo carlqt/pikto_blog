@@ -133,6 +133,23 @@ class BlogsController < ApplicationController
     @blogs = Blog.where(search_params)
   end
 
+  def add_comment
+    @blog = Blog.find params[:id]
+    @comment = @blog.comments.new(comment_params)
+    @comment.user_id = current_user.id
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @blog, notice: 'Comment was successfully created.' }
+        format.json { render :show, status: :created, location: @comment }
+      else
+        @all_comments = Comment.all
+        format.html { render :show }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
@@ -144,7 +161,11 @@ class BlogsController < ApplicationController
       params.require(:blog).permit(:title, :content, :status, :users_id)
     end
 
-  def search_params
+    def comment_params
+      params.require(:comment).permit(:message)
+    end
+
+    def search_params
       params.require(:blog).permit(:title, :status)
     end
 end

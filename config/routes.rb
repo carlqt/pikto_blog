@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :comments
     member do
       get '/update/(:status)', to: 'blogs#update_blog_status'
+      post :add_comment
       put :rename
     end
     collection do
