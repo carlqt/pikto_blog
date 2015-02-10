@@ -9,6 +9,8 @@ class Comment < ActiveRecord::Base
   # Validations
   validates :message, :blog, presence: true
 
+  delegate :email, to: :user, prefix: true
+
   private
   def set_status
     self.status = 'pending'

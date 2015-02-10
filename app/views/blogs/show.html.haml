@@ -15,6 +15,7 @@
 
 = form_for @comment, url: blog_comments_path(@blog) do |f|
   = f.text_area :message, required: true
+  = f.hidden_field :blog_id, value: @blog.id
   %br
   = f.submit "Post Comment"
 
@@ -24,8 +25,9 @@
 
 - @all_comments.each do |comment|
   .panel.panel-default
-    .panel-body
-      = comment.message
+    .panel-heading
+      %strong= comment.user_email
+    .panel-body= comment.message
 
 
 = link_to 'Edit', edit_blog_path(@blog)

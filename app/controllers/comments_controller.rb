@@ -24,14 +24,14 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @blog = Blog.find params[:blog_id]
-    @comment = @blog.comments.new(comment_params)
-    @all_comments = Comment.all
+    @comment = current_user.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to :back, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
+        @blog = Blog.find params[:blog_id]
+        @all_comments = Comment.all
         format.html { render template: 'blogs/show' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
