@@ -1,7 +1,9 @@
 %h1 Listing blogs
+= select_tag "Options", options_for_select(@options), prompt: "- Options -"
 %table.table
   %thead
     %tr
+      %th= check_box_tag "all_blogs"
       %th Title
       %th Content
       %th Status
@@ -10,6 +12,7 @@
   %tbody
     - @blogs.each do |blog|
       %tr
+        %td= check_box_tag "blog-#{blog.id}"
         %td= blog.title
         %td= blog.content
         %td= blog.status

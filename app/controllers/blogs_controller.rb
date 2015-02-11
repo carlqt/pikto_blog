@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
+    @options = %w(Publish Delete Delete\ All Publish\ All)
     if user_signed_in?
       if current_user.is_admin? || current_user.is_editor?
         @blogs = Blog.all
