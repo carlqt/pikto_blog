@@ -20,4 +20,5 @@ $ ->
         type: "DELETE"
         url: "blogs/destroy_multiple"
         dataType: 'script'
+        format: 'js'
         data: {ids:blogs_arr}

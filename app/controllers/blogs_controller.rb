@@ -106,9 +106,12 @@ class BlogsController < ApplicationController
       end
     end
 
+    @options = %w(Publish Delete Delete\ All Publish\ All)
+    @blogs = current_user.blogs
+
     respond_to do |format|
       if failed.empty?
-        format.js { render js: 'alert("Successful!");' }
+        format.js { render 'destroy_multiple.js' }
       else
         format.js { render js: "alert('#{pluralize(failed.count, "blogs")} were not deleted successfully')" }
       end
