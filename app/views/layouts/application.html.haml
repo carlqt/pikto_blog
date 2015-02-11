@@ -26,7 +26,6 @@
     / For all other devices
     / Size should be 32 x 32 pixels
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
-    = javascript_include_tag "application"
   %body
     .navbar.navbar-default.navbar-static-top
       .container
@@ -49,3 +48,5 @@
       %footer
         %p © Company 2014
     / /container
+= javascript_include_tag "application"
+

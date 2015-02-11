@@ -1,0 +1,9 @@
+%tr
+  %td= check_box_tag "blog[]", blog.id
+  %td= blog.title
+  %td= blog.content
+  %td= blog.status
+  %td= blog.user.email
+  %td= link_to 'Show', blog
+  %td= link_to 'Edit', edit_blog_path(blog)
+  %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
