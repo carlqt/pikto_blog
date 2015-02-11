@@ -20,4 +20,4 @@ $ ->
         type: "DELETE"
         url: "blogs/destroy_multiple"
         dataType: 'script'
-        data: {blogs_arr:blogs_arr}
+        data: {ids:blogs_arr}
