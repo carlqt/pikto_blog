@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       put :rename
     end
     collection do
-      put :destroy_multiple
+      delete :destroy_multiple
     end
     # get 'search/(:params)', on: :collection
   end

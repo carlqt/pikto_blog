@@ -1,5 +1,5 @@
 %h1 Listing blogs
-= select_tag "Options", options_for_select(@options), prompt: "- Options -"
+= select_tag "blog-options", options_for_select(@options), prompt: "- Options -"
 %table.table
   %thead
     %tr
@@ -12,7 +12,7 @@
   %tbody
     - @blogs.each do |blog|
       %tr
-        %td= check_box_tag "blog-#{blog.id}"
+        %td= check_box_tag "blog[]", blog.id
         %td= blog.title
         %td= blog.content
         %td= blog.status
